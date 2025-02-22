@@ -1,0 +1,69 @@
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: nb;
+    src: url(./fonts/NBInternationalProBoo.woff2);
+}
+@font-face {
+    font-family: rejouice;
+    src: url(./fonts/Rejouice-Headline.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'nb';
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #fff;
+}
+#loader {
+    height:100%;
+    width:100%;
+    position: fixed;
+    top: 0;
+    background: #000;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: #fff;
+}
+#loader h2 {
+    font-size: 6vw;
+    margin: 0; /* Removes unwanted spacing */
+    position: absolute; /* Keeps all texts in the same place */
+    opacity: 0; /* Hidden by default for animation */
+}
+#page1 {
+    height:100vh;
+    width:100%;
+    position: relative;
+}
+#page1-content {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    z-index: 10;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+hr{
+    width: 94.4vw;
+    margin: 0 auto;
+    justify-content: center;
+}
+#space {
+    margin-left: 8vw;
+}
