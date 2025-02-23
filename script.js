@@ -60,8 +60,6 @@ var icon = document.getElementById("icon");
 
 document.addEventListener("DOMContentLoaded", () => {
   const card = document.querySelector(".card");
-  // const leftSide = document.querySelector(".left-side");
-  // const rightSide = document.querySelector(".right-side");
   const s1 = document.querySelector(".s-1");
   const s2 = document.querySelector(".s-2");
 
@@ -82,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         card.style.width = "100vw";
         card.style.height = "100vh";
-    }, 2000); // Adjust the timing based on the animation speed
+    }, 1000); // Adjust the timing based on the animation speed
 }
 
   card.addEventListener("click", expandCard);
