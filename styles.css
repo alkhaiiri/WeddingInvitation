@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: 'nb'; */
 }
 
 #loader {
@@ -352,6 +351,6 @@ html, body {
     margin: 20px 5px;
 }
 
-.left-side .name .left-side .profession {
+.left-side .cover-subheader .left-side .cover-header {
     text-align: right;
 }
