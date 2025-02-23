@@ -1,18 +1,9 @@
-@font-face {
-    font-family: nb;
-    src: url(./fonts/NBInternationalProBoo.woff2);
-}
-
-@font-face {
-    font-family: rejouice;
-    src: url(./fonts/Rejouice-Headline.ttf);
-}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'nb';
+    /* font-family: 'nb'; */
 }
 
 #loader {
@@ -158,7 +149,6 @@ span {
     width: 12px;
     cursor: pointer;
 }
-
 
 * {
     margin: 0;
@@ -331,7 +321,7 @@ html, body {
 
 .card:hover .right-side {
     transform: rotateY(360deg);
-    text-align: right;
+    text-align: left;
 }
 
 .card:hover .back-side {
@@ -352,8 +342,8 @@ html, body {
 
 .cover-header {
     color: rgb(255, 255, 255);
-    font-size: 30px;
-    margin: 20px 5px;
+    font-size: 27px;
+    /* margin: 20px 5px; */
 }
 
 .cover-subheader {

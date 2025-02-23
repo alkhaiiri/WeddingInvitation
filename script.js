@@ -31,6 +31,17 @@ tl.to(".lording", { opacity: 1, duration: 0.7 })
     duration: 1,
     delay: 0.5,
   })
+  .fromTo(
+    "#loader h2:nth-child(3)",
+    { opacity: 0, x: "100%" },
+    { opacity: 1, x: "0%", duration: 1 }
+  )
+  .to("#loader h2:nth-child(3)", {
+    opacity: 0,
+    x: "-100%",
+    duration: 1,
+    delay: 0.5,
+  })
   .to("#loader", { opacity: 0, display: "none", duration: 1 });
 
 setTimeout(function () {
