@@ -166,18 +166,9 @@ span {
     align-items: center;
 
 }
-/* 
-.s-1 {
-    min-height: 10vh;
-    width: 20%;
-}
-
-.s-2 {
-    min-height: 10vh;
-    width: 20%;
-} */
 
 .s-1, .s-2 {
+    min-height: 10vh;
     transition: opacity 0.5s ease-in-out;
 }
 
@@ -196,7 +187,6 @@ span {
 body {
     font-family: 'Josefin Slab', serif;
     display: flex;
-
     height: 100vh;
     background: black;
     align-items: center;
@@ -204,11 +194,9 @@ body {
     --nav-link-load-time: 500ms;
 }
 
-
-
 #container {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .3)),
         url(images/1.jpg) center no-repeat;
     background-size: cover;

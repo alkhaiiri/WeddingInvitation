@@ -41,8 +41,6 @@ tl.to(".lording", { opacity: 1, duration: 0.7 })
 
 setTimeout(function () {
   $("#container").show();
-  hbdmp.muted = true;
-  hbdmp.play();
 }, 6599);
 
 var hbdmp = document.getElementById("hbdmp");
@@ -64,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const s2 = document.querySelector(".s-2");
 
   function expandCard() {
+    hbdmp.muted = false;
+    hbdmp.play();
     // Hide s-1 and s-2 smoothly
     s1.style.opacity = "0";
     s2.style.opacity = "0";
