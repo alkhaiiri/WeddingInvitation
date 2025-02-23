@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     s2.style.opacity = "0";
 
     setTimeout(() => {
-        s1.style.display = "none"; // Completely hide after fading
-        s2.style.display = "none";
+      s1.style.display = "none"; // Completely hide after fading
+      s2.style.display = "none";
     }, 1500);
 
     // Smooth expansion
@@ -78,10 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Optionally, remove fixed width/height after expansion
     setTimeout(() => {
-        card.style.width = "100vw";
-        card.style.height = "100vh";
+      card.style.width = "100vw";
+      card.style.height = "100vh";
     }, 1000); // Adjust the timing based on the animation speed
-}
+  }
 
   card.addEventListener("click", expandCard);
 });
