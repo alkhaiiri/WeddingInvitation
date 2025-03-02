@@ -12,7 +12,7 @@ tl.to(".lording", { opacity: 1, duration: 0.7 })
   .fromTo(
     "#loader h2:nth-child(1)",
     { opacity: 0, x: "100%" },
-    { opacity: 1, x: "0%", duration: 1 }
+    { opacity: 1, x: "0%", duration: 2 }
   )
   .to("#loader h2:nth-child(1)", {
     opacity: 0,
@@ -23,7 +23,7 @@ tl.to(".lording", { opacity: 1, duration: 0.7 })
   .fromTo(
     "#loader h2:nth-child(2)",
     { opacity: 0, x: "100%" },
-    { opacity: 1, x: "0%", duration: 1 }
+    { opacity: 1, x: "0%", duration: 1.5 }
   )
   .to("#loader h2:nth-child(2)", {
     opacity: 0,
@@ -34,7 +34,7 @@ tl.to(".lording", { opacity: 1, duration: 0.7 })
   .fromTo(
     "#loader h2:nth-child(3)",
     { opacity: 0, x: "100%" },
-    { opacity: 1, x: "0%", duration: 1 }
+    { opacity: 1, x: "0%", duration: 1.5 }
   )
   .to("#loader h2:nth-child(3)", {
     opacity: 0,
@@ -88,5 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000); // Adjust the timing based on the animation speed
   }
 
-  card.addEventListener("click", expandCard);
+  // card.addEventListener("click", expandCard);
+  card.addEventListener("click", function () {
+    card.classList.toggle("active");
+    expandCard();
+  });
 });

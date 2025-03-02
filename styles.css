@@ -314,16 +314,16 @@ html, body {
     box-shadow: 40px 40px 80px #000;
 }
 
-.card:hover .left-side {
+.card.active .left-side {
     transform: rotateY(-360deg);
 }
 
-.card:hover .right-side {
+.card.active .right-side {
     transform: rotateY(360deg);
     text-align: left;
 }
 
-.card:hover .back-side {
+.card.active .back-side {
     transform: translateZ(0);
     z-index: 0;
     box-shadow: 50px 50px 100px #000;
