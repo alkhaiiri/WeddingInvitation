@@ -25,6 +25,15 @@ function App() {
   const [activeNav, setActiveNav] = useState("");
   const [hideNav, setHideNav] = useState(false);
   const [lang, setLang] = useState("my");
+  const [guest, setGuest] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [messages, setMessages] = useState(null);
+  const [guestName, setGuestName] = useState("");
+  const [message, setMessage] = useState("");
+  const [attendance, setAttendance] = useState("attendanceYes");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
 
   useEffect(() => {
     setLang(getLangFromUrl());
@@ -34,6 +43,89 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     return params.get("lang") || "my";
   }
+
+  function getIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id") || null;
+  }
+
+  useEffect(() => {
+    const id = getIdFromUrl();
+    if (!id) {
+      setError("No guest ID in URL.");
+      return;
+    }
+
+    fetch(`https://manage-invitation.vercel.app/api/guests/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error("Guest not found");
+        return res.json();
+      })
+      .then(data => {
+        setGuest(data);
+      })
+      .catch(err => {
+        setError(err.message);
+      });
+
+      fetch(`https://manage-invitation.vercel.app/api/guest-messages?page=1&limit=100`)
+      .then(res => {
+        if (!res.ok) throw new Error("Wishes not found");
+        return res.json();
+      })
+      .then(data => {
+        setMessages(data);
+      })
+      .catch(err => {
+        setError(err.message);
+      });
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSubmitResult(null);
+
+    let attendanceVal = "attendanceYes";
+    if (attendance === "attend") attendanceVal = "attendanceYes";
+    else if (attendance === "absent") attendanceVal = "attendanceNo";
+    else if (attendance === "maybe") attendanceVal = "attendanceMaybe";
+
+    const reqBody = {
+      guests_id: getIdFromUrl(),
+      guests_name: guestName,
+      message,
+      attendance: attendanceVal,
+    };
+
+    try {
+      const res = await fetch("https://manage-invitation.vercel.app/api/guest-messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reqBody),
+      });
+      if (!res.ok) throw new Error("Failed to submit message");
+      setSubmitResult({ success: true });
+      setGuestName("");
+      setMessage("");
+      setAttendance("attendanceYes");
+    } catch (err) {
+      setSubmitResult({ success: false, error: err.message });
+    } finally {
+      setSubmitting(false);
+      fetch(`https://manage-invitation.vercel.app/api/guest-messages?page=1&limit=100`)
+      .then(res => {
+        if (!res.ok) throw new Error("Wishes not found");
+        return res.json();
+      })
+      .then(data => {
+        setMessages(data);
+      })
+      .catch(err => {
+        setError(err.message);
+      });
+    }
+  };
 
   useEffect(() => {
     if (step !== "loading") return;
@@ -169,7 +261,7 @@ function App() {
             <div className="sides left-side">
               <h1 className="cover-header">THE WE</h1>
               <h3 className="cover-subheader">ALKHAIRI</h3>
-              {[...Array(6)].map((_, i) => (
+              {[...Array(5)].map((_, i) => (
                 <h3 className="cover-subheader" key={i}></h3>
               ))}
               <h3
@@ -180,14 +272,14 @@ function App() {
                 }}
                 className="cover-subheader"
               >
-                To:
+                {guest === null ? "" : translations[lang].to}
               </h3>
               <h3 className="cover-subheader"></h3>
             </div>
             <div className="sides right-side">
               <h1 className="cover-header">DDING OF</h1>
               <h3 className="cover-subheader"> & NURISYA</h3>
-              {[...Array(6)].map((_, i) => (
+              {[...Array(5)].map((_, i) => (
                 <h3 className="cover-subheader" key={i}></h3>
               ))}
               <h3
@@ -195,10 +287,17 @@ function App() {
                   height: "5vh",
                   margin: "0px 20px 0px 5px",
                   alignContent: "center",
+                  textAlign: "center"
                 }}
                 className="cover-subheader"
               >
-                Nama dan Partner
+                {guest?.data?.first_guest || ""}
+                {guest?.data?.second_guest && (
+                  <center style={{
+                    margin: "5px 0px"
+                  }}>&</center>
+                )}
+                {guest?.data?.second_guest || ""}
               </h3>
               <h3 className="cover-subheader"></h3>
             </div>
@@ -440,30 +539,15 @@ function App() {
                         data-aos="fade-up"
                         data-aos-duration="1500"
                       >
-                        <form id="form_message">
-                          <input
-                            type="hidden"
-                            id="invitation_code"
-                            name="invitation_code"
-                            value="872g3flu"
-                          />
-                          <input
-                            type="hidden"
-                            id="guest_id"
-                            name="guest_id"
-                            value=""
-                          />
-                          <input
-                            type="hidden"
-                            value="439"
-                            name="order_detail_invitation_id"
-                          />
+                        <form id="form_message" onSubmit={handleSubmit}>
                           <label>{translations[lang].name} : </label>
                           <input
                             id="guest_name"
                             type="text"
                             name="guest_name"
-                            defaultValue=""
+                            value={guestName}
+                            onChange={e => setGuestName(e.target.value)}
+                            required
                           />
                           <p className="font-primary"></p>
                           <br />
@@ -474,6 +558,9 @@ function App() {
                             name="message"
                             rows="3"
                             className="mb-5"
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
+                            required
                           ></textarea>
                           <label>{translations[lang].attendance} :</label>
                           <div className="mt-1 d-flex align-center">
@@ -482,12 +569,10 @@ function App() {
                               name="attendant"
                               value="attend"
                               id="hadir"
-                              defaultChecked
+                              checked={attendance === "attend"}
+                              onChange={() => setAttendance("attend")}
                             />
-                            <label
-                              className="font-primary ml-2"
-                              htmlFor="hadir"
-                            >
+                            <label className="font-primary ml-2" htmlFor="hadir">
                               {translations[lang].attendanceYes}
                             </label>
                           </div>
@@ -497,11 +582,10 @@ function App() {
                               name="attendant"
                               value="absent"
                               id="absent"
+                              checked={attendance === "absent"}
+                              onChange={() => setAttendance("absent")}
                             />
-                            <label
-                              className="font-primary ml-2"
-                              htmlFor="absent"
-                            >
+                            <label className="font-primary ml-2" htmlFor="absent">
                               {translations[lang].attendanceNo}
                             </label>
                           </div>
@@ -511,26 +595,33 @@ function App() {
                               name="attendant"
                               value="maybe"
                               id="maybe"
+                              checked={attendance === "maybe"}
+                              onChange={() => setAttendance("maybe")}
                             />
-                            <label
-                              className="font-primary ml-2"
-                              htmlFor="maybe"
-                            >
+                            <label className="font-primary ml-2" htmlFor="maybe">
                               {translations[lang].attendanceMaybe}
                             </label>
                           </div>
                           <br />
                           <button
-                            type="button"
+                            type="submit"
                             id="btn_message"
                             className="mb-4"
+                            disabled={submitting}
                           >
-                            {translations[lang].submit}
+                            {submitting ? translations[lang].submitting || "Submitting..." : translations[lang].submit}
                             <img
                               src="https://s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/images/icon/send-blue.png"
                               alt=""
                             />
                           </button>
+                          {submitResult && (
+                            <div className="mt-2">
+                              {submitResult.success
+                                ? (translations[lang].submitSuccess || "Message sent successfully!")
+                                : (translations[lang].submitError || "Failed to send message.")}
+                            </div>
+                          )}
                         </form>
                         <div className="flower">
                           <img
@@ -546,28 +637,21 @@ function App() {
                         data-aos="fade-up"
                         data-aos-duration="1000"
                       >
-                        <p className="mb-4">Doa &amp; Ucapan dari undangan</p>
+                        <p className="mb-4">{translations[lang].guestMessage}</p>
                         <ul id="message_list" style={{ listStyle: "none" }}>
-                          <li>
-                            <span className="from">
-                              Abcdefg
-                            </span>
-                            <span className="guest_message">
-                              12312312
-                            </span>
-                          </li>
-                          <li>
-                            <span className="from">123 &amp; zxc</span>
-                            <span className="guest_message">
-                              asdasdasdad
-                            </span>
-                          </li>
-                          <li>
-                            <span className="from">asdads &amp; aasd</span>
-                            <span className="guest_message">
-                              asdasdasd
-                            </span>
-                          </li>
+                          {messages?.data?.messages && messages?.data?.messages?.length > 0 ? (
+                            messages?.data?.messages?.map((msg) => (
+                              <li key={msg.id}>
+                                <span className="from">{msg.guests_name}</span>
+                                <span className="guest_message">{msg.message}</span>
+                              </li>
+                            ))
+                          ) : (
+                            <li>
+                              <span className="from">-</span>
+                              <span className="guest_message">Belum ada ucapan</span>
+                            </li>
+                          )}
                         </ul>
                       </div>
                     </section>
@@ -579,7 +663,7 @@ function App() {
                       >
                         <div className="flower"></div>
                         <ol>
-                          <p style={{textAlign: "center", color: "#ffffff"}}>
+                          <p style={{textAlign: "center", color: "#ffffff", fontFamily: "'Josefin Slab', serif"}}>
                             {translations[lang].weddingPrayer}
                           </p>
                         </ol>
@@ -598,12 +682,6 @@ function App() {
                     >
                       #ALwaysWithNurisya
                     </p>
-                    <img
-                      className="logo"
-                      src="https://yogiazy.github.io/assets/img/favicon.png"
-                      alt=""
-                      width="100"
-                    />
                   </footer>
                 </section>
               </div>
@@ -615,7 +693,7 @@ function App() {
 
       <audio id="hbdmp" ref={audioRef} autoPlay loop muted>
         <source
-          src={process.env.PUBLIC_URL + "/assets/wedding.mp3"}
+          src={process.env.PUBLIC_URL + "assets/wedding.mp3"}
           type="audio/mp3"
         />
       </audio>

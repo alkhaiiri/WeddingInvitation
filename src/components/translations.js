@@ -1,5 +1,6 @@
 const translations = {
   en: {
+    to: "To:",
     coverTitle: "The Wedding Of",
     day: "Day",
     hour: "Hour",
@@ -28,6 +29,7 @@ const translations = {
     weddingPrayer: "O Allah, the Most Merciful, the Most Compassionate, bless this wedding ceremony. Bestow Your blessings and mercy upon this couple. Grant them righteous and pious offspring. Keep their union everlasting until paradise.",
   },
   id: {
+    to: "Kepada Yth:",
     coverTitle: "The Wedding Of",
     day: "Hari",
     hour: "Jam",
@@ -56,13 +58,14 @@ const translations = {
     weddingPrayer: "Ya Allah Ya Rahman Ya Rahim, berkahilah pernikahan ini. Limpahkanlah barakah dan rahmat-Mu kepada kedua mempelai ini. Anugerahkanlah mereka keturunan yang saleh dan salehah. Kekalkanlah jodoh mereka hingga ke surga.",
   },
   my: {
+    to: "Kepada:",
     coverTitle: "Walimatul Urus",
     day: "Hari",
     hour: "Jam",
     minute: "Minit",
     second: "Saat",
     welcomeMessage:
-      "Dengan penuh rasa syukur, kami sekeluarga dengan hormat menjemput Tuan / Puan / Encik / Cik sekeluarga untuk hadir ke Majlis Perkahwinan putera dan puteri kami yang tercinta:",
+      "Dengan penuh kesyukuran, kami mempersilakan Tuan / Puan / Encik / Cik seisi keluarga untuk hadir ke Majlis Perkahwinan putera dan puteri kami:",
     bride: "Mempelai",
     sonOf: "Anak lelaki kepada",
     daughterOf: "Anak perempuan kepada",
