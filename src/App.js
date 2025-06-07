@@ -24,7 +24,7 @@ function App() {
   const invitationRef = useRef();
   const [activeNav, setActiveNav] = useState("");
   const [hideNav, setHideNav] = useState(false);
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState("my");
 
   useEffect(() => {
     setLang(getLangFromUrl());
@@ -32,7 +32,7 @@ function App() {
 
   function getLangFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("lang") || "en";
+    return params.get("lang") || "my";
   }
 
   useEffect(() => {
@@ -395,7 +395,7 @@ function App() {
                               <h3 className="mb-2">Akad Nikah</h3>
                               <p className="mb-2">09:00AM - 10:30AM MYT</p>
                               <br></br>
-                              <h3 className="mb-2">Resepsi</h3>
+                              <h3 className="mb-2">{translations[lang].reception}</h3>
                               <p className="mb-2">12:00PM - 04:00PM MYT</p>
                               <br></br>
                               <p className="bold mb-2">DeRoses Hall - Floral Crystal Event Space</p>

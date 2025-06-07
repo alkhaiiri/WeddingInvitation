@@ -23,6 +23,7 @@ const translations = {
     attendanceMaybe: "Maybe Attending",
     submit: "Submit",
     guestMessage: "Prayers & Wishes from the guests",
+    reception: "Wedding Reception",
   },
   id: {
     day: "Hari",
@@ -48,6 +49,7 @@ const translations = {
     attendanceMaybe: "Mungkin Hadir",
     submit: "Kirim",
     guestMessage: "Doa & Ucapan dari undangan",
+    reception: "Resepsi",
   },
   my: {
     day: "Hari",
@@ -73,6 +75,7 @@ const translations = {
     attendanceMaybe: "Mungkin Hadir",
     submit: "Hantar",
     guestMessage: "Doa & Ucapan dari jemputan",
+    reception: "Majlis Resepsi",
   },
 };
 
