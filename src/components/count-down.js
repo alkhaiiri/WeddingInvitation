@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import translations from "./translations";
 
-function Countdown({ targetDate }) {
+function Countdown({ targetDate, lang }) {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   function getTimeLeft() {
@@ -29,25 +30,25 @@ function Countdown({ targetDate }) {
         className="item animate__animated animate__bounceInUp animate__slower"
         data-days="00"
       >
-        {days} <span>Day</span>
+        {days} <span>{translations[lang].day}</span>
       </div>
       <div
         className="item animate__animated animate__bounceInUp animate__slower"
         data-hours="00"
       >
-        {hours} <span>Hour</span>
+        {hours} <span>{translations[lang].hour}</span>
       </div>
       <div
         className="item animate__animated animate__bounceInUp animate__slower"
         data-minutes="00"
       >
-        {minutes} <span>Minute</span>
+        {minutes} <span>{translations[lang].minute}</span>
       </div>
       <div
         className="item animate__animated animate__bounceInUp animate__slower"
         data-seconds="00"
       >
-        {seconds} <span>Second</span>
+        {seconds} <span>{translations[lang].second}</span>
       </div>
     </div>
   );

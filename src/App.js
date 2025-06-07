@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import "./assets/styles.css";
 import "./assets/invitation.css";
 import "./assets/default.min.css";
@@ -7,6 +7,7 @@ import "./assets/lightbox.min.css";
 import "./assets/splide-core.min.css";
 import Countdown from "./components/count-down";
 import FallingFlower from "./components/falling-flower";
+import translations from "./components/translations";
 
 import gsap from "gsap";
 import AOS from "aos";
@@ -23,10 +24,16 @@ function App() {
   const invitationRef = useRef();
   const [activeNav, setActiveNav] = useState("");
   const [hideNav, setHideNav] = useState(false);
+  const [lang, setLang] = useState("en");
 
   useEffect(() => {
-    console.log('currentStep: ', step);
-  }, [step]);
+    setLang(getLangFromUrl());
+  }, []);
+
+  function getLangFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("lang") || "en";
+  }
 
   useEffect(() => {
     if (step !== "loading") return;
@@ -195,12 +202,9 @@ function App() {
               </h3>
               <h3 className="cover-subheader"></h3>
             </div>
-            {/* card sides and content */}
-            {/* ... use your JSX from previous steps ... */}
             <div className="back-side">
               <div
                 ref={invitationRef}
-                // className={`container-invitation${showInvitation ? "" : " hide"}`}
                 className="container-invitation"
                 style={{
                   overflowY: "scroll",
@@ -208,7 +212,6 @@ function App() {
                   position: "relative",
                 }}
               >
-                {/* ...invitation sections... */}
                 <div className="nav animate__animated animate__bounceInUp animate__slower animate__delay-2s">
                   <ul>
                     <li>
@@ -266,7 +269,7 @@ function App() {
                         - Save the Date -
                       </p>
                       
-                      <Countdown targetDate="2025-07-05 09:00:00" />
+                      <Countdown targetDate="2025-07-05 09:00:00" lang={lang}/>
                       <div className="flower-bottom animate__animated animate__fadeIn animate__slow animate__delay-1s">
                         <img
                           src="https://s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/images/kdo2/index-flower.png"
@@ -281,7 +284,7 @@ function App() {
                   <div className="content">
                   <section>
                       <h2 data-aos="fade-up" data-aos-duration="1500">
-                        Mempelai
+                        {translations[lang].bride}
                       </h2>
                       <br></br>
                   </section>
@@ -293,9 +296,7 @@ function App() {
                         data-aos-duration="1000"
                         style={{ whiteSpace: "pre-wrap" }}
                       >
-                        Dengan rasa penuh kesyukuran, kami sekeluarga berbesar hati mengundang
-                        Tuan / Puan / Encik / Cik seisi keluarga ke Majlis Perkahwinan 
-                        putera puteri kami yang dikasihi:
+                        {translations[lang].welcomeMessage}
                       </p>
                     </section>
                     <div className="row bride-profile">
@@ -326,10 +327,11 @@ function App() {
                           <div data-aos="fade-up" data-aos-duration="1000">
                             {/* <h4 className="mb-2 mt-2">Alkhairi</h4> */}
                             <h5 className="mb-2">Muhammad Alkhairi Mashuri</h5>
-                            <p className="mb-2">Putra dari</p>
-                            <p className="bold">Bapak Kawiyun</p>
+                            <br></br>
+                            <p className="mb-2">{translations[lang].sonOf}</p>
+                            <p className="bold">{translations[lang].fatherPrefix} Kawiyun</p>
                             <p className="bold line-height-1">&amp;</p>
-                            <p className="bold mb-4">Ibu Ernawati</p>
+                            <p className="bold mb-4">{translations[lang].motherPrefix} Ernawati</p>
                             {/* <p style={{ whiteSpace: "pre-wrap" }}>
                               Indonesia
                             </p> */}
@@ -355,10 +357,11 @@ function App() {
                           <div data-aos="fade-up" data-aos-duration="1000">
                             {/* <h4 className="mb-2 mt-2">Nurisya</h4> */}
                             <h5 className="mb-2">Nurisya Ilyana Binti Zairimi</h5>
-                            <p className="mb-2">Putri dari</p>
-                            <p className="bold">Bapak Zairimi Bin Ahmad</p>
+                            <br></br>
+                            <p className="mb-2">{translations[lang].daughterOf}</p>
+                            <p className="bold">{translations[lang].fatherPrefix} Zairimi Bin Ahmad</p>
                             <p className="bold line-height-1">&amp;</p>
-                            <p className="bold mb-4">Ibu Wahida Binti Ab Rahman</p>
+                            <p className="bold mb-4">{translations[lang].motherPrefix} Wahida Binti Ab Rahman</p>
                             {/* <p style={{ whiteSpace: "pre-wrap" }}>
                               Malaysia
                             </p> */}
@@ -375,10 +378,9 @@ function App() {
                       data-aos="fade-up"
                       data-aos-duration="1500"
                     >
-                      Detail Acara
+                      {translations[lang].detail}
                     </h2>
                     <div className="row justify-center mt-6 flex-wrap">
-                      {/* Event 1 */}
                       <section>
                         <div className="item mb-8">
                           <section>
@@ -387,7 +389,7 @@ function App() {
                               data-aos="fade-up"
                               data-aos-duration="1000"
                             >
-                              <p>Minggu, 17 April 2022</p>
+                              <p>{translations[lang].datetime}</p>
                               <br></br>
                               <br></br>
                               <h3 className="mb-2">Akad Nikah</h3>
@@ -407,7 +409,7 @@ function App() {
                                   href="https://maps.app.goo.gl/zKVHSWESD4i7aV7D7"
                                   className="btn-open-map mr-2"
                                 >
-                                  Buka Map
+                                  {translations[lang].openMap}
                                   <img
                                     src="https://s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/images/icon/maps-white.png"
                                     alt=""
@@ -448,7 +450,7 @@ function App() {
                         data-aos="fade-up"
                         data-aos-duration="1000"
                       >
-                        Doa &amp; Ucapan
+                        {translations[lang].pray}
                       </h2>
                     </section>
                     <section>
@@ -475,7 +477,7 @@ function App() {
                             value="439"
                             name="order_detail_invitation_id"
                           />
-                          <label>Nama : </label>
+                          <label>{translations[lang].name} : </label>
                           <input
                             id="guest_name"
                             type="text"
@@ -484,7 +486,7 @@ function App() {
                           />
                           <p className="font-primary"></p>
                           <br />
-                          <label>Pesan untuk Mempelai :</label>
+                          <label>{translations[lang].message} :</label>
                           <textarea
                             id="message"
                             type="text"
@@ -492,7 +494,7 @@ function App() {
                             rows="3"
                             className="mb-5"
                           ></textarea>
-                          <label>Kehadiran :</label>
+                          <label>{translations[lang].attendance} :</label>
                           <div className="mt-1 d-flex align-center">
                             <input
                               type="radio"
@@ -505,7 +507,7 @@ function App() {
                               className="font-primary ml-2"
                               htmlFor="hadir"
                             >
-                              Hadir
+                              {translations[lang].attendanceYes}
                             </label>
                           </div>
                           <div className="mt-2 d-flex align-center">
@@ -519,7 +521,7 @@ function App() {
                               className="font-primary ml-2"
                               htmlFor="absent"
                             >
-                              Tidak Hadir
+                              {translations[lang].attendanceNo}
                             </label>
                           </div>
                           <div className="mt-2 d-flex align-center">
@@ -533,7 +535,7 @@ function App() {
                               className="font-primary ml-2"
                               htmlFor="maybe"
                             >
-                              Mungkin Hadir
+                              {translations[lang].attendanceMaybe}
                             </label>
                           </div>
                           <br />
@@ -542,7 +544,7 @@ function App() {
                             id="btn_message"
                             className="mb-4"
                           >
-                            Kirim
+                            {translations[lang].submit}
                             <img
                               src="https://s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/images/icon/send-blue.png"
                               alt=""
