@@ -257,13 +257,13 @@ function App() {
                         />
                       </div>
                       <h5 className="mb-3 animate__animated animate__flipInY animate__slower animate__delay-1s">
-                        We are getting married
+                        {translations[lang].coverTitle}
                       </h5>
                       <h2 className="font-secondary mb-3 animate__animated animate__bounceInUp animate__slower">
-                        Alkhairi &amp; Nurisya
+                        Alkhairi <br></br>&amp;<br></br> Nurisya
                       </h2>
                       <h4 className="animate__animated animate__bounceInUp animate__slower">
-                        Saturday, July 05, 2025
+                        {translations[lang].datetime}
                       </h4>
                       <p className="d-block animate__animated animate__bounceInUp animate__slower">
                         - Save the Date -
@@ -420,25 +420,6 @@ function App() {
                           </section>
                         </div>
                       </section>
-                      {/* Event 2 */}
-                      {/* <section>
-                        <div className="item mb-8">
-                          <section>
-                            <div
-                              className="detail"
-                              data-aos="fade-up"
-                              data-aos-duration="1000"
-                            >
-                              <h3 className="mb-2">Acara 2</h3>
-                              <p>Minggu, 17 April 2022</p>
-                              <p className="mb-2">12:00 - 14:00 WIB</p>
-                              <p className="bold mb-2">Gedung Acara 2</p>
-                              <p>Jalan Alamat Gedung Acara 2</p>
-                              <div className="d-flex align-center justify-center mt-3"></div>
-                            </div>
-                          </section>
-                        </div>
-                      </section> */}
                     </div>
                   </div>
                 </section>
@@ -597,18 +578,10 @@ function App() {
                         data-aos-duration="1500"
                       >
                         <div className="flower"></div>
-                        <div className="title2">QWERTYUIO</div>
-                        <div className="tume-title">Aasdkhjakfjha</div>
-                        <ol className="nama-pengundang">
-                          <li>zxncbzmxcv</li>
-                          <li>jashdfksajdf</li>
-                          <li>adfkjasdfl</li>
-                        </ol>
-                        <div className="tume-title">Aasdkhjakfjha</div>
-                        <ol className="nama-pengundang">
-                          <li>zxncbzmxcv</li>
-                          <li>jashdfksajdf</li>
-                          <li>adfkjasdfl</li>
+                        <ol>
+                          <p style={{textAlign: "center", color: "#ffffff"}}>
+                            {translations[lang].weddingPrayer}
+                          </p>
                         </ol>
                       </div>
                     </section>

@@ -1,5 +1,6 @@
 const translations = {
   en: {
+    coverTitle: "The Wedding Of",
     day: "Day",
     hour: "Hour",
     minute: "Minute",
@@ -24,8 +25,10 @@ const translations = {
     submit: "Submit",
     guestMessage: "Prayers & Wishes from the guests",
     reception: "Wedding Reception",
+    weddingPrayer: "O Allah, the Most Merciful, the Most Compassionate, bless this wedding ceremony. Bestow Your blessings and mercy upon this couple. Grant them righteous and pious offspring. Keep their union everlasting until paradise.",
   },
   id: {
+    coverTitle: "The Wedding Of",
     day: "Hari",
     hour: "Jam",
     minute: "Menit",
@@ -50,8 +53,10 @@ const translations = {
     submit: "Kirim",
     guestMessage: "Doa & Ucapan dari undangan",
     reception: "Resepsi",
+    weddingPrayer: "Ya Allah Ya Rahman Ya Rahim, berkahilah pernikahan ini. Limpahkanlah barakah dan rahmat-Mu kepada kedua mempelai ini. Anugerahkanlah mereka keturunan yang saleh dan salehah. Kekalkanlah jodoh mereka hingga ke surga.",
   },
   my: {
+    coverTitle: "Walimatul Urus",
     day: "Hari",
     hour: "Jam",
     minute: "Minit",
@@ -76,6 +81,7 @@ const translations = {
     submit: "Hantar",
     guestMessage: "Doa & Ucapan dari jemputan",
     reception: "Majlis Resepsi",
+    weddingPrayer: "Ya Allah Ya Rahman Ya Rahim, berkatilah majlis perkahwinan ini. Limpahkanlah baraqah dan rahmatMu kepada kedua mempelai ini. Kurniakanlah mereka kelak zuriat yang soleh dan solehah. Kekalkanlah jodoh mereka hingga ke jannah.",
   },
 };
 
