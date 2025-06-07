@@ -26,7 +26,6 @@ function App() {
 
   useEffect(() => {
     console.log('currentStep: ', step);
-    // AOS.init();
   }, [step]);
 
   useEffect(() => {
@@ -136,10 +135,6 @@ function App() {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, [showInvitation]);
-
-  // Nav rendering
-  const navClass = `nav${hideNav ? " hide" : ""}`;
-
 
   return (
     <>
@@ -392,35 +387,30 @@ function App() {
                               data-aos="fade-up"
                               data-aos-duration="1000"
                             >
-                              <h3 className="mb-2">Acara 1</h3>
                               <p>Minggu, 17 April 2022</p>
-                              <p className="mb-2">10:00 - 12:00 WIB</p>
-                              <p className="bold mb-2">Gedung Acara 1</p>
-                              <p>Jalan Alamat Gedung Acara 1</p>
+                              <br></br>
+                              <br></br>
+                              <h3 className="mb-2">Akad Nikah</h3>
+                              <p className="mb-2">09:00AM - 10:30AM MYT</p>
+                              <br></br>
+                              <h3 className="mb-2">Resepsi</h3>
+                              <p className="mb-2">12:00PM - 04:00PM MYT</p>
+                              <br></br>
+                              <p className="bold mb-2">DeRoses Hall - Floral Crystal Event Space</p>
+                              <p>F-02-01, Level 2, Center Courtyard</p>
+                              <br></br>
+                              <p>Conezion IOI RESORT CITY, 62502, Putrajaya, Wilayah Persekutuan Putrajaya, Malaysia</p>
                               <div className="d-flex align-center justify-center mt-3">
                                 <a
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  href="https://goo.gl/maps/6Pv3nvReZMBQJww79"
+                                  href="https://maps.app.goo.gl/zKVHSWESD4i7aV7D7"
                                   className="btn-open-map mr-2"
                                 >
                                   Buka Map
                                   <img
                                     src="https://s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/images/icon/maps-white.png"
                                     alt=""
-                                  />
-                                </a>
-                                <a
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  href="Live"
-                                  className="btn-open-live"
-                                >
-                                  Live
-                                  <img
-                                    src="https://s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/images/icon/live-white.png"
-                                    alt=""
-                                    width="24"
                                   />
                                 </a>
                               </div>
@@ -577,25 +567,22 @@ function App() {
                         <ul id="message_list" style={{ listStyle: "none" }}>
                           <li>
                             <span className="from">
-                              Elizabeth Bennet dan Darcy
+                              Abcdefg
                             </span>
                             <span className="guest_message">
-                              Sejatinya pernikahan adalah lembaran baru
-                              kehidupan, kebahagiaan, kebersamaan, dan hal-hal
-                              baik lainnya yang menyertai.
+                              12312312
                             </span>
                           </li>
                           <li>
-                            <span className="from">Edward &amp; Bella</span>
+                            <span className="from">123 &amp; zxc</span>
                             <span className="guest_message">
-                              Mantap!! Selamat berbahagia menjalani bahtera
-                              rumah tangga yang baru.
+                              asdasdasdad
                             </span>
                           </li>
                           <li>
-                            <span className="from">Cinta &amp; Rangga</span>
+                            <span className="from">asdads &amp; aasd</span>
                             <span className="guest_message">
-                              Yeay!! Selamat ya, akhirnya kalian nikah juga :p
+                              asdasdasd
                             </span>
                           </li>
                         </ul>
@@ -608,18 +595,18 @@ function App() {
                         data-aos-duration="1500"
                       >
                         <div className="flower"></div>
-                        <div className="title2">Turut Mengundang</div>
-                        <div className="tume-title">Kel. Mempelai Pria</div>
+                        <div className="title2">QWERTYUIO</div>
+                        <div className="tume-title">Aasdkhjakfjha</div>
                         <ol className="nama-pengundang">
-                          <li>Kel. Bapak Ucok S,H.,</li>
-                          <li>Kel. Bapak Lorem S,Th.</li>
-                          <li>Kel. Ibu D.Liam Alexander</li>
+                          <li>zxncbzmxcv</li>
+                          <li>jashdfksajdf</li>
+                          <li>adfkjasdfl</li>
                         </ol>
-                        <div className="tume-title">Kel. Mempelai Wanita</div>
+                        <div className="tume-title">Aasdkhjakfjha</div>
                         <ol className="nama-pengundang">
-                          <li>Kel.&nbsp;Sarah Anderson, S.E., M.Sc.</li>
-                          <li>Kel. Michael Collins, S.Psi., M.Psi.&nbsp;</li>
-                          <li>Kel. Emily Johnson, S.Farm., M.Farm.&nbsp;</li>
+                          <li>zxncbzmxcv</li>
+                          <li>jashdfksajdf</li>
+                          <li>adfkjasdfl</li>
                         </ol>
                       </div>
                     </section>
