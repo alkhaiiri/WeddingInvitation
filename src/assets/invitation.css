@@ -46,7 +46,7 @@
   }
 
   h5 {
-    font-size: 1.25rem;
+    font-size: 1.50rem;
   }
 
   a {
@@ -726,6 +726,12 @@
     transition: all 5ms ease-in-out;
   }
 
+  .fade-in {
+    opacity: 1;
+    transition: opacity 5s ease-in;
+  }
+
+
   .show {
     display: block !important;
   }
@@ -745,7 +751,7 @@
   .nav {
     position: fixed;
     transform: translate(-50%, -50%);
-    right: 38px;
+    left: 50%;
     z-index: 2;
     top: 30%;
   }
@@ -1000,41 +1006,6 @@
     flex-wrap: nowrap;
   }
 
-  #audio_control {
-    width: 45px;
-    padding: 5px;
-    position: fixed;
-    z-index: 2;
-    cursor: pointer;
-    height: 45px;
-    opacity: 0.5;
-    background-size: cover;
-    background: #666765;
-    border-radius: 50%;
-    right: 36px;
-    bottom: 50px;
-    box-shadow: 0 0 0 rgba(102, 103, 101, 0.4);
-  }
-
-  #audio_control.ver2 {
-    right: calc(50% - 303px);
-  }
-
-  #audio_control.pause.play {
-    background-image: url("/images/icon/icon-play.png");
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  #audio_control.pause {
-    background-image: url("/images/icon/icon-pause.png");
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: pulse 2s infinite;
-  }
-
   @keyframes pulse {
     0% {
       box-shadow: 0 0 0 0 rgba(102, 103, 101, 0.4);
@@ -1109,24 +1080,6 @@
     border-radius: 5px;
     background: #607c8a;
     color: #fff;
-  }
-
-  .list-gift-product li .product-action a:hover {
-    border-color: #df5f5a;
-    background: #df5f5a;
-    color: #ffffff;
-  }
-
-  .list-gift-product li.add-item {
-    background: url("/images/bg-wave.svg") no-repeat bottom, #efefef;
-    padding: 30px;
-    position: relative;
-    border-radius: 7px;
-    box-shadow: 2px 2px 11px 3px rgba(183, 183, 183, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 250px;
   }
 
   @media (min-width: 320px) and (max-width: 480px) {
@@ -1653,12 +1606,12 @@
   }
 
   section.cover .count_down div.item {
-    width: 50px;
+    width: 18vw;
     height: 50px;
-    border: 1px solid #ffffff;
+    border: 2px solid #5d708b;
     border-radius: 5px;
     color: #5d708b;
-    padding: 7px 0;
+    padding: 5px 0;
     text-align: center;
     background: #ffffff;
     font-size: 1rem;
@@ -1775,7 +1728,7 @@
     z-index: 2;
     max-width: 650px;
     margin: auto;
-    padding: 60px 0 50px 0;
+    padding: 30px 0 50px 0;
   }
 
   section.bridegroom .content h2 {
@@ -1916,9 +1869,9 @@
     width: 100%;
     height: 100%;
     padding: 45px 15px 60px 15px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.9);
     color: #5d708b;
-    border-radius: 20px;
+    border-radius: 50px;
   }
 
   section.event .content .item .detail h3 {
@@ -2248,13 +2201,13 @@
   }
 
   section.rsvp .content .form_message {
-    color: #ffffff;
+    color: #5d708b;
     width: 600px;
     margin: auto;
     padding: 60px;
     border-radius: 15px;
     position: relative;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.65);
   }
 
   section.rsvp .content .form_message .flower {
@@ -2328,6 +2281,7 @@
   section.rsvp .content .form_message label,
   section.rsvp .content .form_message p {
     font-size: 1.4rem;
+    font-weight: bold;
   }
 
   section.rsvp .content .form_message label.font-primary,
@@ -2371,7 +2325,7 @@
 
   section.rsvp .message_guest {
     margin: auto;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.7);
     margin-top: 45px;
     border-radius: 15px;
     padding: 35px;
@@ -2382,7 +2336,9 @@
   section.rsvp .message_guest p {
     font-family: "Dancing Script", cursive;
     font-size: 2rem;
-    color: #ffffff;
+    font-weight: bold;
+    align-items: center;
+    color: #5d708bbd;
   }
 
   section.rsvp .message_guest ul li span.from {
@@ -2496,7 +2452,7 @@
   }
 
   .turut-mengundang {
-    background: radial-gradient(rgba(0, 0, 0, 0.1490196078), transparent);
+    background: radial-gradient(#5d708b34, #5d708b91);
     border-radius: 20px;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -2860,6 +2816,24 @@
       left: 0;
     }
 
+    .flower-frame {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 10vh;
+      min-width: 10vw;
+      background: #fff;
+      border-radius: 50px;
+      border: 3px solid #e5c1c5; /* Example: pink border */
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      font-family: 'Josefin Slab', serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #b97a56;
+      margin: 4rem 0;
+    }
+
     section.bridegroom .content .row .col .image-bride .bg-flower.groom {
       transform: scaleX(-1);
     }
@@ -2869,7 +2843,8 @@
     }
 
     section.bridegroom .content .row .col .flower.groom {
-      left: 55px;
+      left: 60px;
+      bottom: -55px;
       transform: scaleX(-1);
     }
 

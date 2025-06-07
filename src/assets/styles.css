@@ -9,6 +9,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
+    left: 0;
     top: 0;
     background: #000;
     z-index: 99;
@@ -102,15 +103,6 @@ hr {
     box-shadow: 0 0 5px rgba(255, 255, 255, .3);
 }
 
-span {
-    color: #737373;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 200px;
-    /* animation: text 10s ease-in-out infinite; */
-}
-
 @keyframes text {
     50% {
         color: black;
@@ -118,13 +110,13 @@ span {
 }
 
 .lording {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
     background: #000;
-    z-index: 100;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +163,7 @@ html, body {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .3)),
-        url(../images/1.jpg) center no-repeat;
+        url(./images/1.jpg) center no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -261,7 +253,7 @@ html, body {
     left: 0;
     background-color: green;
     background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .7)),
-        url(../images/2.jpg) no-repeat;
+        url(./images/2.jpg) no-repeat;
     background-size: cover;
     text-align: right;
     background-position-x: 0;
@@ -278,7 +270,7 @@ html, body {
     right: 0;
     background-color: red;
     background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .7)),
-        url(../images/2.jpg) no-repeat;
+        url(./images/2.jpg) no-repeat;
     background-size: cover;
     background-position-x: -180px;
     width: 50%;
