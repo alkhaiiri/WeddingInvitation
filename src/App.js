@@ -49,6 +49,18 @@ function App() {
   }
 
   useEffect(() => {
+    fetch(`https://manage-invitation.vercel.app/api/guest-messages?page=1&limit=100`)
+      .then(res => {
+        if (!res.ok) throw new Error("Wishes not found");
+        return res.json();
+      })
+      .then(data => {
+        setMessages(data);
+      })
+      .catch(err => {
+        setError(err.message);
+      });
+
     const id = getIdFromUrl();
     if (!id) {
       setError("No guest ID in URL.");
@@ -62,18 +74,6 @@ function App() {
       })
       .then(data => {
         setGuest(data);
-      })
-      .catch(err => {
-        setError(err.message);
-      });
-
-      fetch(`https://manage-invitation.vercel.app/api/guest-messages?page=1&limit=100`)
-      .then(res => {
-        if (!res.ok) throw new Error("Wishes not found");
-        return res.json();
-      })
-      .then(data => {
-        setMessages(data);
       })
       .catch(err => {
         setError(err.message);
@@ -366,7 +366,7 @@ function App() {
                         {translations[lang].datetime}
                       </h4>
                       <p className="d-block animate__animated animate__bounceInUp animate__slower">
-                        - Save the Date -
+                        - #ALwaysWithNurisya -
                       </p>
                       
                       <Countdown targetDate="2025-07-05 09:00:00" lang={lang}/>
@@ -492,7 +492,7 @@ function App() {
                               <p>{translations[lang].datetime}</p>
                               <br></br>
                               <br></br>
-                              <h3 className="mb-2">Akad Nikah</h3>
+                              <h3 className="mb-2">{translations[lang].solemnization}</h3>
                               <p className="mb-2">09:00AM - 10:30AM MYT</p>
                               <br></br>
                               <h3 className="mb-2">{translations[lang].reception}</h3>
