@@ -16,7 +16,7 @@ import 'aos/dist/aos.css';
 function App() {
   const [step, setStep] = useState("loading"); // 'loading', 'loader', 'main'
   const [showInvitation, setShowInvitation] = useState(false);
-  const audioRef = useRef();
+  const audioRef = useRef(null);
   const cardRef = useRef();
   const s1Ref = useRef();
   const s2Ref = useRef();
@@ -26,7 +26,6 @@ function App() {
   const [hideNav, setHideNav] = useState(false);
   const [lang, setLang] = useState("my");
   const [guest, setGuest] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [messages, setMessages] = useState(null);
   const [guestName, setGuestName] = useState("");
@@ -178,7 +177,9 @@ function App() {
 
   function expandCard(card, s1, s2, audio) {
     audio.muted = false;
-    audio.play();
+    audio.play().catch((err) => {
+      console.log("Autoplay blocked:", err);
+    });
 
     if (s1 && s2) {
       s1.style.opacity = "0";
@@ -691,9 +692,13 @@ function App() {
         </div>
       )}
 
-      <audio id="hbdmp" ref={audioRef} autoPlay loop muted>
+      <audio
+        id="hbdmp"
+        ref={audioRef}
+        loop
+      >
         <source
-          src={process.env.PUBLIC_URL + "assets/wedding.mp3"}
+          src={process.env.PUBLIC_URL + "/wedding.mp3"}
           type="audio/mp3"
         />
       </audio>
