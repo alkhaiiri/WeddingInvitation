@@ -366,7 +366,7 @@ function App() {
                         {translations[lang].datetime}
                       </h4>
                       <p className="d-block animate__animated animate__bounceInUp animate__slower">
-                        - #ALwaysWithNurisya -
+                        #ALwaysWithNurisya
                       </p>
                       
                       <Countdown targetDate="2025-07-05 09:00:00" lang={lang}/>
