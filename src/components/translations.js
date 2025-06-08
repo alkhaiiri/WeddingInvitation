@@ -85,7 +85,7 @@ const translations = {
     attendanceMaybe: "Mungkin Hadir",
     submit: "Hantar",
     guestMessage: "Doa & Ucapan dari jemputan",
-    solemnization: "Akad",
+    solemnization: "Akad Nikah",
     reception: "Majlis Resepsi",
     weddingPrayer: "Ya Allah Ya Rahman Ya Rahim, berkatilah majlis perkahwinan ini. Limpahkanlah baraqah dan rahmatMu kepada kedua mempelai ini. Kurniakanlah mereka kelak zuriat yang soleh dan solehah. Kekalkanlah jodoh mereka hingga ke jannah.",
   },
