@@ -312,37 +312,6 @@ function App() {
                   position: "relative",
                 }}
               >
-                <div className="nav animate__animated animate__bounceInUp animate__slower animate__delay-2s">
-                  <ul>
-                    <li>
-                      <a
-                        href="#bridegroom"
-                        className="bridegroomNavItem navItem active"
-                      >
-                        <img
-                          src="https://kadio.id/images/icon/mobile/1.svg"
-                          alt=""
-                        />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#event" className="eventNavItem navItem">
-                        <img
-                          src="https://kadio.id/images/icon/mobile/2.svg"
-                          alt=""
-                        />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#rsvp" className="rsvpNavItem navItem">
-                        <img
-                          src="https://kadio.id/images/icon/mobile/5.svg"
-                          alt=""
-                        />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
                 <section className="cover" id="cover">
                   <FallingFlower show={showInvitation} />
                   <div id="container-invitation hide"></div>
@@ -682,6 +651,14 @@ function App() {
                       }}
                     >
                       #ALwaysWithNurisya
+                    </p>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        padding: 10,
+                        marginBottom: 0,
+                      }}
+                    >
                     </p>
                   </footer>
                 </section>
